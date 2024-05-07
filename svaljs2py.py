@@ -22,23 +22,8 @@ def runCode(jscode):
   return js2py.eval_js("""
   """+atob+"""
 (function(){
-  console.log(btoa);
-Array.prototype.find = Array.prototype.find || function(callback) {
-  if (this === null) {
-    throw new TypeError('Array.prototype.find called on null or undefined');
-  } else if (typeof callback !== 'function') {
-    throw new TypeError('callback must be a function');
-  }
-  var list = Object(this);
-  var length = list.length >>> 0;
-  var thisArg = arguments[1];
-  for (var i = 0; i < length; i++) {
-    var element = list[i];
-    if ( callback.call(thisArg, element, i, list) ) {
-      return element;
-    }
-  }
-};
+
+
 try{
   if(!globalThis){
     this.globalThis=this;
@@ -66,8 +51,7 @@ globalThis.interpreter = new Sval(globalThis.options);
 globalThis.parse = globalThis.interpreter.parse;
 
 function buildSval(){
-  this.scope={};
-  globalThis.console=console;
+
 """ + sval +"""
 
 }
